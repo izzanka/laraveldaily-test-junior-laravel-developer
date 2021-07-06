@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CompanieController;
+use App\Http\Controllers\EmployeeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,5 +22,8 @@ Route::get('/', function () {
 Auth::routes([
     'register' => false
 ]);
+
+Route::resource('companies',CompanieController::class);
+Route::resource('employees',EmployeeController::class);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
