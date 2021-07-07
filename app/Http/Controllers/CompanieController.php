@@ -2,10 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use Spatie\Image\Image;
+use App\Models\Companie;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\CompanieStoreRequest;
 
 class CompanieController extends Controller
 {
+    public $logoName;
+
+    public function resizing($logo){
+
+        $this->logoName = time() . '.' . $logo->extension();
+        $path = $logo->storeAs('public/logos',$this->logoName);
+
+        //resize logo with spatie
+        Image::load(public_path('storage/logos') . '/' . $this->logoName)->width(100)->height(100)->save();
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +28,8 @@ class CompanieController extends Controller
      */
     public function index()
     {
-        return view('companie.index');
+        $companies = Companie::latest()->paginate(4);
+        return view('companie.index',compact('companies'));
     }
 
     /**
@@ -23,7 +39,7 @@ class CompanieController extends Controller
      */
     public function create()
     {
-        //
+        return view('companie.create');
     }
 
     /**
@@ -32,9 +48,25 @@ class CompanieController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CompanieStoreRequest $request)
     {
-        //
+        //store logo
+        if($request->hasFile('logo')){
+            $logo = $request->file('logo');
+            //resize image function
+            $this->resizing($logo);
+        }else{
+            $this->logoName = 'default.jpg';
+        }
+        
+        Companie::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'logo' => $this->logoName,
+            'website' => $request->website
+        ]);
+
+        return back()->with('message',['text' => 'Companie Added Sucessfully!', 'class' => 'success']);
     }
 
     /**
@@ -56,7 +88,8 @@ class CompanieController extends Controller
      */
     public function edit($id)
     {
-        //
+        $companie = Companie::find($id);
+        return view('companie.edit',compact('companie'));
     }
 
     /**
@@ -66,9 +99,29 @@ class CompanieController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CompanieStoreRequest $request, $id)
     {
-        //
+        $companie = Companie::find($id);
+
+        //store logo
+        if($request->hasFile('logo')){
+            $logo = $request->file('logo');
+            //resize image function
+            $this->resizing($logo);
+        }else if($companie->logo != null){
+        }else{
+            $this->logoName = 'default.jpg';
+        }
+
+        $companie->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'logo' => $this->logoName,
+            'website' => $request->website
+        ]);
+
+        return back()->with('message',['text' => 'Companie Updated Sucessfully!', 'class' => 'success']);
+
     }
 
     /**
@@ -77,8 +130,9 @@ class CompanieController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Companie $companie)
     {
-        //
+        $companie->delete();
+        return back()->with('message',['text' => 'Companie deleted successfully!', 'class' => 'success']);
     }
 }
