@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CompanieController;
 use App\Http\Controllers\EmployeeController;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,16 +16,24 @@ use App\Http\Controllers\EmployeeController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Auth::routes([
     'register' => false
 ]);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::middleware('auth')->group(function(){
+    
+    Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => App\Http\Controllers\LanguageController::class,'switch']);
 
-Route::resource('employees',EmployeeController::class);
+    Route::get('/', function () {
+        return view('home');
+    });
 
-Route::resource('companies',CompanieController::class);
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+    Route::resource('employees',EmployeeController::class);
+    Route::resource('companies',CompanieController::class);
+    
+});
+
+
