@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-Edit Companie
+{{ __('companie.title3') }}
 @endsection
 @section('content')
 <div class="container">
@@ -11,8 +11,8 @@ Edit Companie
         <div class="col-md-12 mt-2">
             <div class="card">
                 <div class="card-header">
-                    Edit Companie
-                    <a href="{{ route('companies.index') }}" class="btn btn-sm btn-secondary float-right">Back</a>
+                    {{ __('companie.title3') }}
+                    <a href="{{ route('companies.index') }}" class="btn btn-sm btn-secondary float-right"> {{ __('companie.btn4') }}</a>
                 </div>
                 <div class="card-body">
                     <form action="{{ route('companies.update',$companie->id) }}" method="POST" enctype="multipart/form-data">
@@ -20,12 +20,12 @@ Edit Companie
                         @method('PUT')
                         <div class="row">
                           <div class="col-6">
-                            <label for="">Name</label>
+                            <label for=""> {{ __('companie.table1') }}</label>
                             <input type="text" class="form-control" name="name" value="{{ $companie->name }}">
                             @include('layouts.error', ['name' => 'name'])
                           </div>
                           <div class="col-6">
-                            <label for="">Email</label>
+                            <label for=""> {{ __('companie.table2') }}</label>
                             <input type="email" class="form-control" name="email" value="{{ $companie->email }}">
                             @include('layouts.error', ['name' => 'email'])
                         </div>
@@ -36,11 +36,11 @@ Edit Companie
                                 <div class="custom-file mt-3">
                                     <input type="file" name="logo" class="custom-file-input" accept="image/*" onchange="document.getElementById('output').src = window.URL.createObjectURL(this.files[0])">
                                     @include('layouts.error', ['name' => 'logo'])
-                                    <label for="" class="custom-file-label">Choose Logo..</label>
+                                    <label for="" class="custom-file-label"> {{ __('companie.table3') }}</label>
                                 </div>
                             </div>
                             <div class="col-6 ">
-                                <label for="">Website</label>
+                                <label for=""> {{ __('companie.table4') }}</label>
                                 <div class="mt-2">
                                     <input type="text" name="website" class="form-control" value="{{ $companie->website }}">
                                     @include('layouts.error', ['name' => 'website'])
@@ -48,7 +48,7 @@ Edit Companie
                             </div>
                       </div>
                       <div class="row p-3">
-                            <button class="btn btn-primary btn-block" type="submit">Edit Companie</button>
+                            <button class="btn btn-primary btn-block" type="submit"> {{ __('companie.btn5') }}</button>
                       </div>
                     </form>
                 </div>

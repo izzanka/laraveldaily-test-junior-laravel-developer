@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-Employees
+{{ __('employee.title') }}
 @endsection
 @section('content')
 <div class="container">
@@ -11,8 +11,8 @@ Employees
         <div class="col-md-12 mt-2">
             <div class="card">
                 <div class="card-header">
-                    Employees
-                    <a href="{{ route('employees.create')}}" class="btn btn-sm btn-primary float-right">Add Employee</a>
+                    {{ __('employee.title') }}
+                    <a href="{{ route('employees.create')}}" class="btn btn-sm btn-primary float-right">{{ __('employee.btn1') }}</a>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -20,12 +20,12 @@ Employees
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>First Name</th>
-                                    <th>Last Name</th>
-                                    <th>Company Name</th>
-                                    <th>Email</th>
-                                    <th>Phone</th>
-                                    <th>Action</th>
+                                    <th>{{ __('employee.table1') }}</th>
+                                    <th>{{ __('employee.table2') }}</th>
+                                    <th>{{ __('employee.table3') }}</th>
+                                    <th>{{ __('employee.table4') }}</th>
+                                    <th>{{ __('employee.table5') }}</th>
+                                    <th>{{ __('employee.table6') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -38,17 +38,17 @@ Employees
                                         <td>{{ $employee->email }}</td>
                                         <td>{{ $employee->phone }}</td>
                                         <td>
-                                            <a href="{{ route('employees.edit',$employee->id) }}" class="btn btn-primary btn-sm btn-block">Edit</a>
+                                            <a href="{{ route('employees.edit',$employee->id) }}" class="btn btn-primary btn-sm btn-block">{{ __('employee.btn2') }}</a>
                                             
                                             <form action="{{ route('employees.destroy',$employee->id) }}" method="post">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-danger btn-sm btn-block mt-2" onclick="return confirm('Are you sure?')">Delete</button>
+                                                <button type="submit" class="btn btn-danger btn-sm btn-block mt-2" onclick="return confirm('{{ __('employee.alert') }}')">{{ __('employee.btn3') }}</button>
                                             </form>
                                         </td>
                                     </tr>
                                 @empty
-                                <td colspan="7"><strong>No Data</strong></td>
+                                <td colspan="7"><strong>{{ __('employee.status') }}</strong></td>
                                 @endforelse
                             </tbody>
 

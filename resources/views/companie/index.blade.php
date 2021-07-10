@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-Companies
+{{ __('companie.title') }}
 @endsection
 @section('content')
 <div class="container">
@@ -11,8 +11,8 @@ Companies
         <div class="col-md-12 mt-2">
             <div class="card">
                 <div class="card-header">
-                    Companies
-                    <a href="{{ route('companies.create') }}" class="btn btn-sm btn-primary float-right">Add Companie</a>
+                    {{ __('companie.title') }}
+                    <a href="{{ route('companies.create') }}" class="btn btn-sm btn-primary float-right">{{ __('companie.btn1') }}</a>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -20,11 +20,11 @@ Companies
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Logo</th>
-                                    <th>Website</th>
-                                    <th>Action</th>
+                                    <th>{{ __('companie.table1') }}</th>
+                                    <th>{{ __('companie.table2') }}</th>
+                                    <th>{{ __('companie.table3') }}</th>
+                                    <th>{{ __('companie.table4') }}</th>
+                                    <th>{{ __('companie.table5') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -38,17 +38,17 @@ Companies
                                         </td>
                                         <td><a href="https://{{ $companie->website }}" target="_blank">{{ $companie->website }}</a></td>
                                         <td>
-                                            <a href="{{ route('companies.edit',$companie->id) }}" class="btn btn-primary btn-sm btn-block">Edit</a>
+                                            <a href="{{ route('companies.edit',$companie->id) }}" class="btn btn-primary btn-sm btn-block">{{ __('companie.btn2') }}</a>
                                             
                                             <form action="{{ route('companies.destroy',$companie->id) }}" method="post">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-danger btn-sm btn-block mt-2" onclick="return confirm('Are you sure?')">Delete</button>
+                                                <button type="submit" class="btn btn-danger btn-sm btn-block mt-2" onclick="return confirm('{{ __('companie.alert') }}')">{{ __('companie.btn3') }}</button>
                                             </form>
                                         </td>
                                     </tr>
                                 @empty
-                                <td colspan="5"><strong>No Data</strong></td>
+                                <td colspan="6"><strong>{{ __('companie.status') }}</strong></td>
                                 @endforelse
                             </tbody>
 

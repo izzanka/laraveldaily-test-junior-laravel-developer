@@ -28,7 +28,7 @@ class CompanieController extends Controller
      */
     public function index()
     {
-        $companies = Companie::latest()->paginate(4);
+        $companies = Companie::latest()->paginate(10);
         return view('companie.index',compact('companies'));
     }
 
@@ -66,7 +66,7 @@ class CompanieController extends Controller
             'website' => $request->website
         ]);
 
-        return back()->with('message',['text' => 'Companie Added Sucessfully!', 'class' => 'success']);
+        return back()->with('message',['text' => __('companie.status1'), 'class' => 'success']);
     }
 
     /**
@@ -120,7 +120,7 @@ class CompanieController extends Controller
             'website' => $request->website
         ]);
 
-        return back()->with('message',['text' => 'Companie Updated Sucessfully!', 'class' => 'success']);
+        return back()->with('message',['text' => __('companie.status2'), 'class' => 'success']);
 
     }
 
@@ -133,6 +133,6 @@ class CompanieController extends Controller
     public function destroy(Companie $companie)
     {
         $companie->delete();
-        return back()->with('message',['text' => 'Companie deleted successfully!', 'class' => 'success']);
+        return back()->with('message',['text' => __('companie.status3'), 'class' => 'success']);
     }
 }

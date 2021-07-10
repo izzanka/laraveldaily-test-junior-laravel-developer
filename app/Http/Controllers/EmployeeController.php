@@ -27,7 +27,7 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        $companies = Companie::select('id','name')->get();
+        $companies = Companie::select('id','name')->latest()->get();
         return view('employee.create',compact('companies'));
     }
 
@@ -47,7 +47,7 @@ class EmployeeController extends Controller
             'phone' => $request->phone
         ]);
 
-        return back()->with('message',['text' => 'Employee added successfully!', 'class' => 'success']);
+        return back()->with('message',['text' => __('employee.status1'), 'class' => 'success']);
     }
 
     /**
@@ -90,7 +90,7 @@ class EmployeeController extends Controller
             'phone' => $request->phone
         ]);
 
-        return back()->with('message',['text' => 'Employee updated successfully!', 'class' => 'success']);
+        return back()->with('message',['text' => __('employee.status2'), 'class' => 'success']);
     }
 
     /**
@@ -102,6 +102,6 @@ class EmployeeController extends Controller
     public function destroy(Employee $employee)
     {
         $employee->delete();
-        return back()->with('message',['text' => 'Employee deleted successfully!', 'class' => 'success']);
+        return back()->with('message',['text' => __('employee.status3'), 'class' => 'success']);
     }
 }
