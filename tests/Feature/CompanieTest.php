@@ -14,25 +14,25 @@ class CompanieTest extends TestCase
     public $user;
 
     protected function setUp() : void{
-        parent::setUp();
-        $this->user = User::factory()->create();
-        $this->actingAs($this->user);
+          parent::setUp();
+          $this->user = User::factory()->create();
+          $this->actingAs($this->user);
     }
-    
-    //    public function testDenyHomeWhenNotLogginIn(){
-    //        $response = $this->get('/');
-    //        $response->assertRedirect(route('login'));
-    //    }
 
-   public function testAllowCompanieIndex(){
+//     public function testWhenNotLogginIn(){
+//        $response = $this->get('/');
+//        $response->assertRedirect(route('login'));
+//     }
+
+    public function testAllowCompanieIndex(){
        $response = $this->get(route('companies.index'));
        $response->assertOk();
-   }
+    }
 
-   public function testAllowCompanieCreate(){
+    public function testAllowCompanieCreate(){
         $response = $this->get(route('companies.create'));
         $response->assertOk();
-   }
+    }
 
 //    public function testAllowCompanieStore()
 //    {
@@ -49,12 +49,12 @@ class CompanieTest extends TestCase
 //        $this->assertDatabaseHas('companies',$params);
 //    }
 
-   public function testAllowCompanieEdit(){
+    public function testAllowCompanieEdit(){
         $companie = Companie::factory()->create();
 
         $response = $this->get(route('companies.edit',$companie->id));
         $response->assertOk();
-   }
+    }
 
 //    public function testAllowCompanieUpdate()
 //    {
@@ -75,14 +75,13 @@ class CompanieTest extends TestCase
 //        $this->assertDatabaseHas('companies',$params);
 //    }
 
-   public function testAllowCompanieDelete()
-   {
+    public function testAllowCompanieDelete(){
         $companie = Companie::factory()->create();
 
         $response = $this->delete(route('companies.destroy',$companie->id));
         $response->assertRedirect(route('companies.index'));
 
         $this->assertDatabaseMissing('companies',['id' => $companie->id]);
-   }
+    }
 
 }

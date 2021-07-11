@@ -19,7 +19,7 @@ class EmployeeTest extends TestCase
         $this->actingAs($this->user);
     }
 
-//    public function testDenyHomeWhenNotLogginIn(){
+//    public function testWhenNotLogginIn(){
 //        $response = $this->get('/');
 //        $response->assertRedirect(route('login'));
 //    }
