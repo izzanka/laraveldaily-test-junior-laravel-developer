@@ -2,7 +2,7 @@
 
 return [
     
-    'title' => 'Employee',
+    'title1' => 'Employee',
     'title2' => 'Add Employee',
     'title3' => 'Edit Employee',
     
@@ -13,10 +13,10 @@ return [
     'table5' => 'Phone',
     'table6' => 'Action',
 
-    'status' => 'No Data',
-    'status1' => 'Employee Added Sucessfully!',
-    'status2' => 'Employee Updated Sucessfully!',
-    'status3' => 'Employee Deleted Successfully!',
+    'status1' => 'No Data',
+    'status2' => 'Employee Added Sucessfully!',
+    'status3' => 'Employee Updated Sucessfully!',
+    'status4' => 'Employee Deleted Successfully!',
 
     'btn1' => 'Add Employee',
     'btn2' => 'Edit',

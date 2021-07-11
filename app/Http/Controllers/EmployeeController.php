@@ -47,7 +47,7 @@ class EmployeeController extends Controller
             'phone' => $request->phone
         ]);
 
-        return back()->with('message',['text' => __('employee.status1'), 'class' => 'success']);
+        return redirect()->route('employees.create')->with('message',['text' => __('employee.status2'), 'class' => 'success']);
     }
 
     /**
@@ -90,7 +90,7 @@ class EmployeeController extends Controller
             'phone' => $request->phone
         ]);
 
-        return back()->with('message',['text' => __('employee.status2'), 'class' => 'success']);
+        return redirect()->route('employees.edit',$employee->id)->with('message',['text' => __('employee.status3'), 'class' => 'success']);
     }
 
     /**
@@ -102,6 +102,6 @@ class EmployeeController extends Controller
     public function destroy(Employee $employee)
     {
         $employee->delete();
-        return back()->with('message',['text' => __('employee.status3'), 'class' => 'success']);
+        return redirect()->route('employees.index')->with('message',['text' => __('employee.status4'), 'class' => 'success']);
     }
 }

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-{{ __('companie.title') }}
+{{ __('companie.title1') }}
 @endsection
 @section('content')
 <div class="container">
@@ -39,7 +39,6 @@
                                         <td><a href="https://{{ $companie->website }}" target="_blank">{{ $companie->website }}</a></td>
                                         <td>
                                             <a href="{{ route('companies.edit',$companie->id) }}" class="btn btn-primary btn-sm btn-block">{{ __('companie.btn2') }}</a>
-                                            
                                             <form action="{{ route('companies.destroy',$companie->id) }}" method="post">
                                                 @csrf
                                                 @method('DELETE')
@@ -48,7 +47,7 @@
                                         </td>
                                     </tr>
                                 @empty
-                                <td colspan="6"><strong>{{ __('companie.status') }}</strong></td>
+                                <td colspan="6"><strong>{{ __('companie.status1') }}</strong></td>
                                 @endforelse
                             </tbody>
 

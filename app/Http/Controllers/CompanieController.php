@@ -12,7 +12,7 @@ class CompanieController extends Controller
 {
     public $logoName;
 
-    public function resizing($logo){
+    public function resize_logo($logo){
 
         $this->logoName = time() . '.' . $logo->extension();
         $path = $logo->storeAs('public/logos',$this->logoName);
@@ -53,8 +53,8 @@ class CompanieController extends Controller
         //store logo
         if($request->hasFile('logo')){
             $logo = $request->file('logo');
-            //resize image function
-            $this->resizing($logo);
+            //resize logo function
+            $this->resize_logo($logo);
         }else{
             $this->logoName = 'default.jpg';
         }
@@ -66,7 +66,7 @@ class CompanieController extends Controller
             'website' => $request->website
         ]);
 
-        return back()->with('message',['text' => __('companie.status1'), 'class' => 'success']);
+        return redirect()->route('companies.create')->with('message',['text' => __('companie.status2'), 'class' => 'success']);
     }
 
     /**
@@ -107,8 +107,9 @@ class CompanieController extends Controller
         if($request->hasFile('logo')){
             $logo = $request->file('logo');
             //resize image function
-            $this->resizing($logo);
+            $this->resize_logo($logo);
         }else if($companie->logo != null){
+            $this->logoName = $companie->logo;
         }else{
             $this->logoName = 'default.jpg';
         }
@@ -120,7 +121,7 @@ class CompanieController extends Controller
             'website' => $request->website
         ]);
 
-        return back()->with('message',['text' => __('companie.status2'), 'class' => 'success']);
+        return redirect()->route('companies.edit',$companie->id)->with('message',['text' => __('companie.status3'), 'class' => 'success']);
 
     }
 
@@ -130,9 +131,10 @@ class CompanieController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Companie $companie)
+    public function destroy($id)
     {
+        $companie = Companie::find($id);
         $companie->delete();
-        return back()->with('message',['text' => __('companie.status3'), 'class' => 'success']);
+        return redirect()->route('companies.index')->with('message',['text' => __('companie.status4'), 'class' => 'success']);
     }
 }

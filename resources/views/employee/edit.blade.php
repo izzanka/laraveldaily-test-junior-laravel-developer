@@ -45,7 +45,7 @@
                                             echo "<option $select value='$companie->id'>".$companie['name']."</option>"
                                         @endphp
                                     @empty
-                                        <option value="" selected> {{ __('employee.status') }}</option>
+                                        <option value="" selected> {{ __('employee.status1') }}</option>
                                     @endforelse
                                 </select>
                                 @include('layouts.error', ['name' => 'companie_id'])

@@ -2,7 +2,7 @@
 
 return [
     
-    'title' => 'Companie',
+    'title1' => 'Companie',
     'title2' => 'Add Companie',
     'title3' => 'Edit Companie',
 
@@ -12,10 +12,10 @@ return [
     'table4' => 'Website',
     'table5' => 'Action',
 
-    'status' => 'No Data',
-    'status1' => 'Companie Added Sucessfully!',
-    'status2' => 'Companie Updated Sucessfully!',
-    'status3' => 'Companie Deleted Successfully!',
+    'status1' => 'No Data',
+    'status2' => 'Companie Added Sucessfully!',
+    'status3' => 'Companie Updated Sucessfully!',
+    'status4' => 'Companie Deleted Successfully!',
 
     'btn1' => 'Add Companie',
     'btn2' => 'Edit',

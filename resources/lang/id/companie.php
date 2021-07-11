@@ -2,7 +2,7 @@
 
 return [
     
-    'title' => 'Perusahaan',
+    'title1' => 'Perusahaan',
     'title2' => 'Tambah Perusahaan',
     'title3' => 'Edit Perusahaan',
  
@@ -12,10 +12,10 @@ return [
     'table4' => 'Situs',
     'table5' => 'Aksi',
 
-    'status' => 'Data Kosong',
-    'status1' => 'Perusahaan Berhasil Ditambahkan!',
-    'status2' => 'Perusahaan Berhasil Diubah!',
-    'status3' => 'Perusahaan Berhasil Dihapus!',
+    'status1' => 'Data Kosong',
+    'status2' => 'Perusahaan Berhasil Ditambahkan!',
+    'status3' => 'Perusahaan Berhasil Diubah!',
+    'status4' => 'Perusahaan Berhasil Dihapus!',
     
     'btn1' => 'Tambah Perusahaan',
     'btn2' => 'Ubah',

@@ -2,7 +2,7 @@
 
 return [
     
-    'title' => 'Karyawan',
+    'title1' => 'Karyawan',
     'title2' => 'Tambah Karyawan',
     'title3' => 'Ubah Karyawan',
 
@@ -13,10 +13,10 @@ return [
     'table5' => 'Ponsel',
     'table6' => 'Aksi',
 
-    'status' => 'Data Kosong',
-    'status1' => 'Karyawan Berhasil Ditambahkan!',
-    'status2' => 'Karyawan Berhasil Diubah!',
-    'status3' => 'Karyawan Berhasil Dihapus!',
+    'status1' => 'Data Kosong',
+    'status2' => 'Karyawan Berhasil Ditambahkan!',
+    'status3' => 'Karyawan Berhasil Diubah!',
+    'status4' => 'Karyawan Berhasil Dihapus!',
 
     'btn1' => 'Tambah Karyawan',
     'btn2' => 'Ubah',

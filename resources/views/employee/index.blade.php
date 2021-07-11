@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-{{ __('employee.title') }}
+{{ __('employee.title1') }}
 @endsection
 @section('content')
 <div class="container">
@@ -48,7 +48,7 @@
                                         </td>
                                     </tr>
                                 @empty
-                                <td colspan="7"><strong>{{ __('employee.status') }}</strong></td>
+                                <td colspan="7"><strong>{{ __('employee.status1') }}</strong></td>
                                 @endforelse
                             </tbody>
 
