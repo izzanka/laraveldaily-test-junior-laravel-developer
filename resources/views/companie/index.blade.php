@@ -11,7 +11,7 @@
         <div class="col-md-12 mt-2">
             <div class="card">
                 <div class="card-header">
-                    {{ __('companie.title') }}
+                    {{ __('companie.title1') }}
                     <a href="{{ route('companies.create') }}" class="btn btn-sm btn-primary float-right">{{ __('companie.btn1') }}</a>
                 </div>
                 <div class="card-body">

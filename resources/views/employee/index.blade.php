@@ -11,12 +11,12 @@
         <div class="col-md-12 mt-2">
             <div class="card">
                 <div class="card-header">
-                    {{ __('employee.title') }}
+                    {{ __('employee.title1') }}
                     <a href="{{ route('employees.create')}}" class="btn btn-sm btn-primary float-right">{{ __('employee.btn1') }}</a>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table text-center table-bordered table-striped">
+                        <table class="table text-center table-bordered table-striped" id="EmployeeTable">
                             <thead>
                                 <tr>
                                     <th>#</th>
@@ -64,9 +64,7 @@
                 </div>
             </div>
         </div>
-
- 
-
     </div>
 </div>
 @endsection
+
