@@ -84,7 +84,7 @@ class EmployeeTest extends TestCase
    {
         $employee = Employee::factory()->create();
 
-        $response = $this->delete(route('employees.destroy',$employee->id));
+        $response = $this->get(route('employees.destroy',$employee->id));
         $response->assertRedirect(route('employees.index'));
 
         $this->assertDatabaseMissing('employees',['id' => $employee->id]);

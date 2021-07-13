@@ -78,7 +78,7 @@ class CompanieTest extends TestCase
     public function testAllowCompanieDelete(){
         $companie = Companie::factory()->create();
 
-        $response = $this->delete(route('companies.destroy',$companie->id));
+        $response = $this->get(route('companies.destroy',$companie->id));
         $response->assertRedirect(route('companies.index'));
 
         $this->assertDatabaseMissing('companies',['id' => $companie->id]);
