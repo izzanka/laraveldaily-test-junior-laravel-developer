@@ -31,8 +31,11 @@ Route::middleware('auth')->group(function(){
 
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-    Route::resource('employees',EmployeeController::class);
-    Route::resource('companies',CompanieController::class);
+    Route::resource('employees',EmployeeController::class)->except(['destroy']);
+    Route::get('/employees/{employee}/destroy',[EmployeeController::class,'destroy'])->name('employees.destroy');
+    
+    Route::resource('companies',CompanieController::class)->except(['destroy']);
+    Route::get('/companies/{companie}/destroy',[CompanieController::class,'destroy'])->name('companies.destroy');
     
 });
 
