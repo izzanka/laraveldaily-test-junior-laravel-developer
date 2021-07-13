@@ -15,56 +15,50 @@
                     <a href="{{ route('employees.create')}}" class="btn btn-sm btn-primary float-right">{{ __('employee.btn1') }}</a>
                 </div>
                 <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table text-center table-bordered table-striped" id="EmployeeTable">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>{{ __('employee.table1') }}</th>
-                                    <th>{{ __('employee.table2') }}</th>
-                                    <th>{{ __('employee.table3') }}</th>
-                                    <th>{{ __('employee.table4') }}</th>
-                                    <th>{{ __('employee.table5') }}</th>
-                                    <th>{{ __('employee.table6') }}</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @forelse ($employees as $employee)
-                                    <tr>
-                                        <td>{{ ($employees->currentPage() - 1) * $employees->perPage() + $loop->iteration }}</td>
-                                        <td>{{ $employee->first_name }}</td>
-                                        <td>{{ $employee->last_name }}</td>
-                                        <td><a href="">{{ $employee->companie->name }}</a></td>
-                                        <td>{{ $employee->email }}</td>
-                                        <td>{{ $employee->phone }}</td>
-                                        <td>
-                                            <a href="{{ route('employees.edit',$employee->id) }}" class="btn btn-primary btn-sm btn-block">{{ __('employee.btn2') }}</a>
-                                            
-                                            <form action="{{ route('employees.destroy',$employee->id) }}" method="post">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-danger btn-sm btn-block mt-2" onclick="return confirm('{{ __('employee.alert') }}')">{{ __('employee.btn3') }}</button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                @empty
-                                <td colspan="7"><strong>{{ __('employee.status1') }}</strong></td>
-                                @endforelse
-                            </tbody>
-
-                        </table>
-                    </div>
-
-                    <div class="row">
-                        <div class="col">
-                            {{ $employees->links() }}
-                        </div>
-                    </div>
-
+                    <table class="table text-center table-bordered table-striped" id="EmployeesTable">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>{{ __('employee.table1') }}</th>
+                                <th>{{ __('employee.table2') }}</th>
+                                <th>{{ __('employee.table3') }}</th>
+                                <th>{{ __('employee.table4') }}</th>
+                                <th>{{ __('employee.table5') }}</th>
+                                <th>{{ __('employee.table6') }}</th>
+                            </tr>
+                        </thead>
+                        <tbody>     
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
 </div>
+@endsection
+
+@section('script')
+<script type="text/javascript">
+    $(document).ready( function () {
+        $.noConflict();
+        $('#EmployeesTable').DataTable({
+            "processing": true,
+            "serverSide": true,
+            "responsive": true,
+            "autoWidth": true,
+            "ajax": "{{ route('api.employees.index') }}",
+            "columns": [
+                { "data": "DT_RowIndex", name:'DT_RowIndex'},
+                { "data": "first_name" },
+                { "data": "last_name" },
+                { "data": "companie.name" },
+                { "data": "email" },
+                { "data": "phone" },
+                { "data": "action", name:'action', orderable: false, searchable: false }
+            ]
+        });
+
+    } );
+</script>
 @endsection
 

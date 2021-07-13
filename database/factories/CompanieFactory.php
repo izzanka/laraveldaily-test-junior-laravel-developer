@@ -24,7 +24,7 @@ class CompanieFactory extends Factory
         return [
             'name' => $this->faker->company,
             'email' => $this->faker->companyEmail,
-            'logo' => 'logo.jpg',
+            'logo' => 'default.jpg',
             'website' => $this->faker->domainName
         ];
     }

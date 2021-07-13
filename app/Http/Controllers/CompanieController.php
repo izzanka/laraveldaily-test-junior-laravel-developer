@@ -28,8 +28,9 @@ class CompanieController extends Controller
      */
     public function index()
     {
-        $companies = Companie::latest()->paginate(10);
-        return view('companie.index',compact('companies'));
+        // $companies = Companie::latest()->paginate(10);
+        // return view('companie.index',compact('companies'));
+        return view('companie.index');
     }
 
     /**
