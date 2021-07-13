@@ -19,7 +19,7 @@ https://laraveldaily.com/test-junior-laravel-developer-sample-project/
 ## Advanced Test
 
 
-- Use Datatables.net library to show table – with our without server-side rendering
+- Use Datatables.net library to show table – with our without server-side rendering √
 - Use more complicated front-end theme like AdminLTE √
 - Email notification: send email whenever new company is entered (use Mailgun or    Mailtrap)
 - Make the project multi-language (using resources/lang folder) √
