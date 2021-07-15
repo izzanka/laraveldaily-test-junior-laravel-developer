@@ -45,7 +45,7 @@
             "processing": true,
             "serverSide": true,
             "responsive": true,
-            "ajax": "{{ route('api.employees.index') }}",
+            "ajax": "{{ route('api.employees') }}",
             "columns": [
                 { "data": "DT_RowIndex", name:'DT_RowIndex'},
                 { "data": "first_name" },

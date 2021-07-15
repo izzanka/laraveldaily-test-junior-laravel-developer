@@ -10,8 +10,9 @@ use Illuminate\Support\Facades\Storage;
 class CompanieApiController extends Controller
 {
     public function getCompanies(){
-        $companie = Companie::get();
+        $companie = Companie::select('id','name','email','logo','website')->get();
         return datatables()->of($companie)
+                ->addIndexColumn()
                 ->addColumn('image',function($companie){
                     $url = Storage::url('logos/' . $companie->logo);
                     return '<img src="'. $url .'" width="100" height="100" class="img-fluid" alt="logo">';
@@ -22,7 +23,6 @@ class CompanieApiController extends Controller
                     <a href="/companies/' . $companie->id . '/destroy"
                     class="btn btn-danger btn-sm btn-block">Delete</a>';
                 })
-                ->addIndexColumn()
                 ->rawColumns(['image','action'])
                 ->make(true);
     }

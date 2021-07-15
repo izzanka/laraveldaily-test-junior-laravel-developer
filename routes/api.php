@@ -16,13 +16,9 @@ use App\Http\Controllers\Api\EmployeeApiController;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
 Route::prefix('v1')->group(function(){
-    Route::get('/employees', [EmployeeApiController::class,'getEmployees'])->name('api.employees.index');
-    Route::get('/companies', [CompanieApiController::class,'getCompanies'])->name('api.companies.index');
+    Route::get('/employees', [EmployeeApiController::class,'getEmployees'])->name('api.employees');
+    Route::get('/companies', [CompanieApiController::class,'getCompanies'])->name('api.companies');
 });
 
 
