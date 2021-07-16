@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api;
 use App\Models\Employee;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\EmployeeResource;
+
 
 class EmployeeApiController extends Controller
 {
@@ -23,4 +25,15 @@ class EmployeeApiController extends Controller
                 ->rawColumns(['action'])
                 ->make(true);
     }
+
+    public function index(){
+        $employees = Employee::with('companie')->get();
+        return EmployeeResource::collection($employees);
+    }
+
+    public function show(Employee $employee){
+        return new EmployeeResource($employee->load(['companie']));
+    }
+
+    
 }

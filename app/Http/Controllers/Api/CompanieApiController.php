@@ -6,6 +6,7 @@ use App\Models\Companie;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Resources\CompanieResource;
 
 class CompanieApiController extends Controller
 {
@@ -25,5 +26,14 @@ class CompanieApiController extends Controller
                 })
                 ->rawColumns(['image','action'])
                 ->make(true);
+    }
+
+    public function index(){
+        $companies = Companie::get();
+        return CompanieResource::collection($companies);
+    }
+
+    public function show(Companie $company){
+        return new CompanieResource($company);
     }
 }

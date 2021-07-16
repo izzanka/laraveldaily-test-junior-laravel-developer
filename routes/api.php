@@ -16,10 +16,15 @@ use App\Http\Controllers\Api\EmployeeApiController;
 |
 */
 
-Route::prefix('v1')->group(function(){
-    Route::get('/employees', [EmployeeApiController::class,'getEmployees'])->name('api.employees');
-    Route::get('/companies', [CompanieApiController::class,'getCompanies'])->name('api.companies');
-});
+
+Route::get('/getEmployees', [EmployeeApiController::class,'getEmployees'])->name('api.employees');
+Route::get('/getCompanies', [CompanieApiController::class,'getCompanies'])->name('api.companies');
+
+Route::apiResource('employees', EmployeeApiController::class)->only(['index','show']);
+Route::apiResource('companies', CompanieApiController::class)->only(['index','show']);
+
+
+
 
 
 
