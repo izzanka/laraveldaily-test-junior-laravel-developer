@@ -21,7 +21,7 @@ return [
     'btn2' => 'Edit',
     'btn3' => 'Delete',
     'btn4' => 'Back',
-    'bnt5' => 'Edit Companie',
+    'btn5' => 'Edit Companie',
 
     'alert' => 'Are You Sure?',
 ];
