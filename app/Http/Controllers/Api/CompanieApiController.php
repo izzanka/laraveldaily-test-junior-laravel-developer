@@ -11,7 +11,7 @@ use App\Http\Resources\CompanieResource;
 class CompanieApiController extends Controller
 {
     public function getCompanies(){
-        $companie = Companie::select('id','name','email','logo','website')->get();
+        $companie = Companie::select('id','name','email','logo','website')->latest()->get();
         return datatables()->of($companie)
                 ->addIndexColumn()
                 ->addColumn('image',function($companie){
@@ -25,7 +25,7 @@ class CompanieApiController extends Controller
                     class="btn btn-danger btn-sm btn-block">Delete</a>';
                 })
                 ->rawColumns(['image','action'])
-                ->make(true);
+                ->toJson();
     }
 
     public function index(){
