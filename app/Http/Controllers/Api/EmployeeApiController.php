@@ -13,7 +13,7 @@ class EmployeeApiController extends Controller
     public function getEmployees(){
         $employee = Employee::with(['companie' => function($query){
             $query->select(['id','name']);
-        }])->select('id','first_name','last_name','email','phone','companie_id')->get();
+        }])->select('id','first_name','last_name','email','phone','companie_id')->latest()->get();
         return datatables()->of($employee)
                 ->addIndexColumn()
                 ->addColumn('action',function($employee){
@@ -23,7 +23,7 @@ class EmployeeApiController extends Controller
                     class="btn btn-danger btn-sm btn-block">Delete</a>';
                 })
                 ->rawColumns(['action'])
-                ->make(true);
+                ->toJson();
     }
 
     public function index(){
