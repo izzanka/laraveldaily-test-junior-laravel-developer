@@ -87,10 +87,9 @@ class CompanieController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Companie $company)
     {
-        $companie = Companie::find($id);
-        return view('companie.edit',compact('companie'));
+        return view('companie.edit',compact('company'));
     }
 
     /**
@@ -100,29 +99,27 @@ class CompanieController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(CompanieStoreRequest $request, $id)
+    public function update(CompanieStoreRequest $request, Companie $company)
     {
-        $companie = Companie::find($id);
-
         //store logo
         if($request->hasFile('logo')){
             $logo = $request->file('logo');
             //resize image function
             $this->resize_logo($logo);
-        }else if($companie->logo != null){
-            $this->logoName = $companie->logo;
+        }else if($company->logo != null){
+            $this->logoName = $company->logo;
         }else{
             $this->logoName = 'default.jpg';
         }
 
-        $companie->update([
+        $company->update([
             'name' => $request->name,
             'email' => $request->email,
             'logo' => $this->logoName,
             'website' => $request->website
         ]);
 
-        return redirect()->route('companies.edit',$companie->id)->with('message',['text' => __('companie.status3'), 'class' => 'success']);
+        return redirect()->route('companies.edit',$company->id)->with('message',['text' => __('companie.status3'), 'class' => 'success']);
 
     }
 
@@ -132,10 +129,9 @@ class CompanieController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Companie $company)
     {
-        $companie = Companie::find($id);
-        $companie->delete();
+        $company->delete();
         return redirect()->route('companies.index')->with('message',['text' => __('companie.status4'), 'class' => 'success']);
     }
 }
