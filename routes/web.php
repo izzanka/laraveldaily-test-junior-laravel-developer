@@ -35,7 +35,7 @@ Route::middleware('auth')->group(function(){
     Route::get('/employees/{employee}/destroy',[EmployeeController::class,'destroy'])->name('employees.destroy');
     
     Route::resource('companies',CompanieController::class)->except(['destroy']);
-    Route::get('/companies/{companie}/destroy',[CompanieController::class,'destroy'])->name('companies.destroy');
+    Route::get('/companies/{company}/destroy',[CompanieController::class,'destroy'])->name('companies.destroy');
     
 });
 
