@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CompanieController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\Auth\SocialiteController;
 
 
 /*
@@ -20,6 +21,9 @@ use App\Http\Controllers\EmployeeController;
 Auth::routes([
     'register' => false
 ]);
+
+Route::get('/auth/redirect/{provider}',[SocialiteController::class,'redirect'])->name('auth.redirect');
+Route::get('/auth/callback/{provider}',[SocialiteController::class,'callback'])->name('auth.callback');
 
 Route::middleware('auth')->group(function(){
     

@@ -64,6 +64,14 @@
                                 @endif
                             </div>
                         </div>
+
+                        <div class="from-group row mt-4">
+                            <div class="col-md-6 offset-md-3">
+                                <a href="/auth/redirect/google" class="btn btn-block btn-sm btn-danger">Sign in with Google</a>
+                                <a href="/auth/redirect/github" class="btn btn-block btn-sm btn-dark">Sign in with Github</a>
+                            </div>
+                        </div>
+
                     </form>
                 </div>
             </div>
