@@ -36,20 +36,19 @@ class CompanieTest extends TestCase
         $response->assertViewIs('companie.create');
     }
 
-//    public function testAllowCompanieStore()
-//    {
-//        $params = [
-//         'name' => 'xiomi',
-//         'email' => 'xiomi@gmail.com',
-//         'logo' => 'xiomi.png',
-//         'website' => 'xiomi.com',
-//        ];
+   public function testAllowCompanieStore()
+   {
+       $params = [
+        'name' => 'xiomi',
+        'email' => 'xiomi@gmail.com',
+        'website' => 'xiomi.com'
+       ];
 
-//        $response = $this->post(route('companies.store',$params));
-//        $response->assertRedirect(route('companies.create'));
+       $response = $this->post(route('companies.store',$params));
+       $response->assertRedirect(route('companies.create'));
 
-//        $this->assertDatabaseHas('companies',$params);
-//    }
+       $this->assertDatabaseHas('companies',$params);
+   }
 
     public function testAllowCompanieEdit(){
         $companie = Companie::factory()->create();
@@ -60,24 +59,23 @@ class CompanieTest extends TestCase
 
     }
 
-//    public function testAllowCompanieUpdate()
-//    {
-//        $companie = Companie::factory()->create();
+   public function testAllowCompanieUpdate()
+   {
+       $companie = Companie::factory()->create();
 
-//        $params = [
-//         'name' => 'xiomi',
-//         'email' => 'xiomi@gmail.com',
-//         'logo' => 'xiomi.png',
-//         'website' => 'xiomi.com',
-//        ];
+       $params = [
+        'name' => 'xiomi',
+        'email' => 'xiomi@gmail.com',
+        'website' => 'xiomi.com',
+       ];
 
-//        $response = $this->put(route('companies.update',$companie->id),$params);
-//        $response->assertRedirect(route('companies.edit',$companie->id));
+       $response = $this->put(route('companies.update',$companie->id),$params);
+       $response->assertRedirect(route('companies.edit',$companie->id));
 
-//        $params['name'] = 'Updated';
+       $params['name'] = 'xiomi';
     
-//        $this->assertDatabaseHas('companies',$params);
-//    }
+       $this->assertDatabaseHas('companies',$params);
+   }
 
     public function testAllowCompanieDelete(){
         $companie = Companie::factory()->create();
